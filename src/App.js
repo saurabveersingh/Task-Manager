@@ -3,12 +3,14 @@ import React, { useState } from "react";
 
 
 function App() {
-  
+  if(!localStorage.getItem('tasks')){
+    localStorage.setItem('tasks',JSON.stringify([]));
+  }
   const [task, setTask] = useState("")
-  const [list, setList] = useState([])
+  const [list, setList] = useState(JSON.parse(localStorage.getItem('tasks')))
   const [select, setSelect] = useState()
   const [update,setUpdate] = useState("");
-
+  localStorage.setItem('tasks',JSON.stringify(list));
 
   function addTask() {
     if(task!=""){
@@ -35,6 +37,12 @@ function App() {
     }
   }
 
+  function deleteItem(delIndex) {
+    setList((prev) => {
+      return prev.filter((item, index) => index !== delIndex);
+    })
+  }
+
   function handleInput(e) {
     setTask(e.target.value);
   }
@@ -50,12 +58,6 @@ function App() {
     if(e.key === "Enter"){
       updateTask();
     } 
-  }
-
-  function deleteItem(delIndex) {
-    setList((prev) => {
-      return prev.filter((item, index) => index !== delIndex);
-    })
   }
 
   function selectItem(index) {

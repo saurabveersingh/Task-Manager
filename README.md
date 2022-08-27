@@ -1,3 +1,16 @@
+#Make sure you have latest node.js installed and run the following commands in given order to make the app function in your local device...
+
+npm install
+
+npm run start
+
+#About Project
+
+• Applies JavaScript and React.js to create,edit and delete tasks.
+• Amazing CSS design that Applies Animations when creating or
+deleting task.
+• Stores data for each user that is retrieved on subsequent visits.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

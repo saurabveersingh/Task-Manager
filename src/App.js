@@ -13,14 +13,14 @@ function App() {
   localStorage.setItem('tasks',JSON.stringify(list));
 
   function addTask() {
-    if(task!=""){
+    if(task!==""){
       setList((prev) => [...prev, task]);
       setTask("");
     }
   }
 
   function updateTask() {
-    if(update!=""){
+    if(update!==""){
       setList((prev) => {
         return prev.map((item, index) => {
             if (index === select) {
@@ -37,9 +37,14 @@ function App() {
     }
   }
 
-  function deleteItem(delIndex) {
-    setList((prev) => {
-      return prev.filter((item, index) => index !== delIndex);
+  function deleteItem(e,delIndex) {
+    const element = e.target.parentElement;
+    element.style.animationPlayState = 'running';
+    element.addEventListener('animationend',()=>{
+      setList((prev) => {
+        return prev.filter((item, index) => index !== delIndex);
+      })
+      window. location. reload(false); //// fix issue --> unable to delete same index twice
     })
   }
 
@@ -61,7 +66,7 @@ function App() {
   }
 
   function selectItem(index) {
-      if(select==index){
+      if(select===index){
         updateTask();
       }
       else{
@@ -70,21 +75,23 @@ function App() {
       }
   }
 
-
+  
   return (
     <div className="app">
-      <h1 className="heading">TASKS</h1>
+      <div className="header">
+            <h1 className="heading">TASKS</h1>
             <input className="addField" type="text" onChange={handleInput} value={task} autoFocus onKeyUp={enterInput} />
             <button className="addButton" onClick={() => addTask()}>Add Task</button>
-
-
+      </div>
+            {/* {()=>{if(true) alert(true); return <h1>No Tasks</h1>}} */}
             {list.map((item, index) => {
                 return (
-                <div className="taskDiv" key={index}>
+                <div className="taskDiv" key={index} style={index%2===0?{backgroundColor:"hsl(28, 17%, 45%)"}:{backgroundColor:"brown"}}>
                 <h3 className="taskText">{index+1}) {item}</h3>
             
-               
-            <button className="delete" onClick={() => deleteItem(index)} >Delete</button>
+            <button 
+            className="delete" 
+            onClick={(e) => {deleteItem(e,index)}} >Delete</button>
             <input className="updateField" type="text" onChange={handleUpdate} value={update}  hidden={index !== select} onKeyUp={enterUpdate}/>
             <button className="updateButton" onClick={() => selectItem(index)}>Update</button>
             </div>

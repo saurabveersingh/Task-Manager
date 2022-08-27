@@ -1,4 +1,6 @@
-# Make sure you have latest node.js installed and run the following commands in given order to make the app function in your local device...
+# Make sure you have latest node.js installed 
+
+# Run the following commands in given order to make the app function in your local device...
 
 npm install
 

@@ -8,9 +8,9 @@ npm run start
 
 # About Project
 
-• Applies JavaScript and React.js to create,edit and delete tasks.
+• Applies JavaScript and React.js to create,edit and delete tasks.\
 • Amazing CSS design that Applies Animations when creating or
-deleting task.
+deleting task.\
 • Stores data for each user that is retrieved on subsequent visits.
 
 # Getting Started with Create React App

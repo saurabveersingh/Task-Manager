@@ -27,6 +27,12 @@
   font-size: auto;
   color: white;
 }
+.addField:hover{
+  cursor:cell;
+}
+button:hover{
+  cursor: pointer;
+}
 .taskDiv{
   font-style: italic;
   font-family: "Brush Script MT", cursive;

@@ -86,7 +86,7 @@ function App() {
             {/* {()=>{if(true) alert(true); return <h1>No Tasks</h1>}} */}
             {list.map((item, index) => {
                 return (
-                <div className="taskDiv" key={index} style={index%2===0?{backgroundColor:"hsl(28, 17%, 45%)"}:{backgroundColor:"brown"}}>
+                <div className="taskDiv" key={index} style={index%2===0?{backgroundColor:"yellow"}:{backgroundColor:"greenyellow"}}>
                 <h3 className="taskText">{index+1}) {item}</h3>
             
             <button 
